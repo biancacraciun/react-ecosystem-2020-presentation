@@ -2,9 +2,12 @@ import { themes, Notes } from "mdx-deck";
 import { LiveCode } from "mdx-deck-live-code";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Code from "mdx-code";
+
+import Goo from 'gooey-react'
+
 import { IdentityAvatar, IdentityTable, Likes, SideBySide } from "./styles";
 import ProCons from "./components/ProCons";
-
+import hookTweet from "./assets/hook-tweet.png"
 import "./setup";
 
 import matrixTheme from "./styles/theme";
@@ -569,7 +572,9 @@ I would love to see more experiments like these.
       />
     </td>
     <td>
-      <a href="https://formidable.com/open-source/urql/">https://formidable.com/open-source/urql/</a>
+      <a href="https://formidable.com/open-source/urql/">
+        https://formidable.com/open-source/urql/
+      </a>
     </td>
   </tr>
 </SideBySide>
@@ -583,3 +588,437 @@ other features like retry, authenticate or how your application haves when it no
 It is one of the most feature complete GraphQL clients I've seen recently released, with a small footprint
 
 ---
+
+# Bundlers
+
+## Rollup
+
+Is as awesome as ever, and a lot of tools build on top of it, because it has an easier interface to develop plugin in it,
+whereas webpack requires you to know a lot of the internals. Used by `Svelte`, `vite` and `parcel`
+
+## Parcel
+
+Parcel has shaken the balance of a webpacks monopoly, with it's zero config mentality. It is currently struggleing to release
+the v2, definitly something to look up to. Sadly the documentation is lacking some of the hidden features, but it's posibile
+to find more insight in their github issues section. Using v2-beta in production is not advised.
+
+---
+
+# Bundlers
+
+## Webpack
+
+The most popular bundler in this group has just launched its v5 with performance improvements. Since its a mature product you
+can do a lot of things with it, using plugins to optimize it's build time, though sometimes its hard to keep with all of the
+changes. Knowing its history, it definitly improved towards a more 0 configuration, having default behaviours builtin, but its
+still more flexible than parcel. With module fedaration it will bring the micro frontends architecture to a new level.
+
+## CRA
+
+It recently release it's `v4`, that enables react-refresh and webpack improvements. Unless you already ejected, it is very easy to
+upgrade. `create-react-app` enables you to start a project without breaking a sweat. You can take it a bit further, and use `react-app-rewire`
+to fit your needs, without ejecting. I personaly went with this approach and it paid off.
+
+---
+
+# Bonus
+
+## EsBuild (https://github.com/evanw/esbuild)
+
+<img src="https://raw.githubusercontent.com/evanw/esbuild/master/images/benchmark.png" />
+
+It's a compiler, like `babel`, but powered by golang. It's easy to find the plugin, loader or what ever you need to replace
+your uglify or terser minifier to this one. It also supports typescript, and might be a better alternatives than tsc, from my
+findings on the web
+
+---
+
+# Bonus
+
+## Nx (https://nx.dev/react)
+
+This one might become a bit absolute since webpacks module federation is now in place, managing monorepos might become easier. On top of this,
+one of the issues was rebuilding the entire project on each change, which now with `esbuild` should be as fast the speed of light. One of the cons
+is that the templates are a bit opinionated and not as flexible as using `lerna`, but it has some nice features like detecting affected packages
+and showing a dependency graph of them.
+
+---
+
+# UI systems
+
+<SideBySide>
+  <tr>
+    <td>
+      <svg width="36px" height="32px" viewBox="0 0 30 26" fill="#E1251B">
+        <polygon points="19,0 30,0 30,26"></polygon>
+        <polygon points="11.1,0 0,0 0,26"></polygon>
+        <polygon points="15,9.6 22.1,26 17.5,26 15.4,20.8 10.2,20.8"></polygon>
+      </svg>
+    </td>
+    <td>
+      <a href="https://react-spectrum.adobe.com/index.html">https://react-spectrum.adobe.com/index.html</a>
+    </td>
+  </tr>
+</SideBySide>
+
+Adobe is a bit late to the party, but it did join the React hype train. It promotes it's own design system,
+a system based on 50 shades of gray. The good part is can be easily customized to fit your needs using a theme provider.
+It's unique way of having the UI system split in 3 repositories might help you reduce the size, and have some clean code:
+`React Spectrum` has the set of components, `React Aria` exposes hooks that you can use to make the application as accesible
+as posible, whereas `React Stately` handles how the exchange of data happens in your application.
+
+The other side of the knife cut is that you need some very organized and disciplined engineers to work with such a system,
+that is a bit overegineered. But this as complete as it can get from a UI system perspective.
+
+One of its maintainers is the `parcel` lead developer, so no surprise React Spectrum is using parcel for the build system.
+Is this why `parcel v2` is delayed?
+
+---
+
+# UI systems
+
+<SideBySide>
+  <tr>
+    <td>
+      <img src="https://github.com/airbnb/visx/blob/master/assets/visx-geometry.png?raw=true" style={{maxWidth: "200px"}} />
+    </td>
+    <td>
+      <a href="https://airbnb.io/visx/">https://airbnb.io/visx/</a>
+    </td>
+  </tr>
+</SideBySide>
+
+<small>
+
+Airbnb is one of the companies that are not afraid to opensource their code. And they usually do it with flare. They are realy
+involved in the React community. `visx` is one more reason why the above statement is true.
+
+They are not reinventing the wheel with this library, but it does give you some nice visualisation graphs that you can use in your
+projects. Powered by `d3`, it's one of the libraries that you have to glue the code yourself, here is where it's documentation website shines.
+The entire documentation website is one big NextJS application, meaning that these graph are indexable by google!
+
+It has React components that you can use to consume the data provided by some utility functions (that are actually d3 functions).
+This is how React should be used with d3. Usually people just mount the svg in the page and let `d3` to take care of the entire work.
+
+It's modular and has every component it its own repository and very similar to https://nivo.rocks/
+
+</small>
+
+---
+# UI systems
+
+<SideBySide>
+  <tr>
+    <td>
+      <img src="https://github.com/galio-org/galio/raw/master/assets/galio-logo.png" style={{maxWidth: "200px"}} />
+    </td>
+    <td>
+      <a href="https://galio.io/">https://galio.io/</a>
+    </td>
+  </tr>
+</SideBySide>
+
+Since we've been talking a lot about the web side of React, this time, we have a library specific only for
+React native. It definitly looks better than material designs based libraries.
+When it comes to the number of components it exposes, they are in the low, but should be enought to create
+a small application on top of it.
+
+---
+# UI systems
+
+<SideBySide>
+  <tr>
+    <td>
+      actyx / industrial-ui
+    </td>
+    <td>
+      <a href="https://github.com/Actyx/industrial-ui">https://github.com/Actyx/industrial-ui</a>
+    </td>
+  </tr>
+</SideBySide>
+
+Do you need a design system that work well for people with large digits? It might as well work for tables
+used by old people, since the font size abd the touch area are preaty big, and they realy have an industrial feel
+
+---
+
+# UI systems
+
+<SideBySide>
+  <tr>
+    <td>
+     <img src="https://react.geist-ui.dev/images/logo.png" style={{maxWidth: "200px"}} />
+    </td>
+    <td>
+      <a href="https://react.geist-ui.dev/en-us/guide/introduction">https://react.geist-ui.dev/en-us/guide/introduction</a>
+    </td>
+  </tr>
+</SideBySide>
+
+By now you can guess I'm a fan of what Vercel, formerly known as zeit are doing for the open source community. And this time,
+they outdone themselvs with this ui library that has all of the basic components you need plus some specific ones like: `Capacity`, `Dot`,
+`File-Tree`, `Keyboard`, `Snippet` and `CSSBaseline`. They have a very nice visual language and some tasty `Toast` components.
+They have the customization part handed over on a plate to us by having a page where you can create your theme.
+The only thing that bugs me is that they don't have a scrollbars!!!!!
+
+---
+
+# UI systems
+
+<SideBySide>
+  <tr>
+    <td>
+     <img src="https://user-images.githubusercontent.com/36158/68255527-bea16d00-002d-11ea-9ad7-7dc0eebd55d2.png" style={{maxWidth: "200px"}} />
+    </td>
+    <td>
+      <a href="https://ui.aragon.org/">https://ui.aragon.org/</a>
+    </td>
+  </tr>
+</SideBySide>
+
+This library has a clean design with a dash of gradients beeing overused.
+Nothing too fancy, but a solid library none-the-less. It is a well deserved break from material like libraries
+I wish more components were shown as example in their documentation webiste.
+
+---
+
+# UI systems
+
+<SideBySide>
+  <tr>
+    <td>
+     Gestalt
+    </td>
+    <td>
+      <a href="https://gestalt.netlify.app/">https://gestalt.netlify.app/</a>
+    </td>
+  </tr>
+</SideBySide>
+
+One of the early React adopters, the creators of `react-canvas`, disapoited with their
+components library. There is no way of theming it, but at least their documentation website
+is well executed (better than the one from the previous slide)
+I guess since mostly Pinterest has one job, that it does well, their UI library is limited to
+what they need. There is no wow factor.
+
+---
+
+# Bonus round
+
+You want your own UI system? Don't want to deal with CSS?
+
+https://xstyled.dev/docs/system/
+This should make your library as flexible as posible, since it exposes some low level
+mixins that you can use with either styled components or emotion to handle properties that
+will customize the way your base will look like. It's highly inspired from https://styled-system.com/
+
+https://storybook.js.org/
+This can act as a business card for your library.
+You can even automate snapshot tests on top of it using jest
+
+https://loki.js.org/
+Regression testing done on top of storybook with ease.
+It doesn't create conflicts when using different OSs.
+
+---
+
+# Hooks
+
+<img src={hookTweet} />
+
+---
+
+# Hooks
+
+React is becoming more of a runtine which is a good thing, because the javascript language is limited,
+We might even see a transition to a different language http://rescript-lang.org/. ReScript, formaly known as ReasonML
+has builtin support for React and had `hooks` way before they were even introduced in React. How? The guy who created React
+is also the creator of Reason, a language that has all of the shortcomings of the javascript language all figured out.
+Its strongly typed, has pattern matching and compiles to JS and it can even be used to create native application, yes!
+
+Enough ranting! Resuming our normal program.
+
+---
+
+# Hooks
+
+`useImperativeHandle`, the least popular hook of them all, might one day save your life.
+https://levelup.gitconnected.com/reacts-useimperativehandle-made-simple-81035a21eef0
+
+---
+
+# Hooks
+
+I like reading the source code of libraries. Hey have so much to teach us.
+
+https://www.react-spring.io/ will make your mind blow in million pieces. It's one of the projects that rellys heavily on the
+`useImperativeHandle` hook.
+
+Add flare to your website. From animations to interations like drag and drop, to even paralax scrolling.
+From my oppinion is my go-to library if it'd like to animate things in react. It has a bit of a learning curve but it will be
+worth it if used with other libraries from the same author
+
+---
+
+# Hooks
+
+https://formidable.com/open-source/renature/ Is does just the animation part of react-spring. It is considerly smaller, but maintains the same
+idea of of passing properties to the element you want to animate.
+
+---
+
+# Hooks
+
+https://reach.tech/router/ This is not just a hook, but you might be very familiar with it (as a hook) if you are using Gatsby
+It has a small footprint and its way more flexible than the react router, promising a better API for users to interact with
+It would be my go-to router if I'd start a new project. Passing just the route name to a comonent, nested routes is just a dream
+You can programaticaly move to a route using either the hook or the service itself. React router v4 just ruined everthing for me.
+
+---
+
+# Hooks
+
+https://frontarm.com/navi/en/ Oh another router! I guess I was too lazy to create a different category for routers. Here is a different one.
+What this one does a better job than some other routers in the market is that it handles initial data request to the server, making it
+an excelent candidate for people in the quest of finding a library that plays well with SSR or SSGs.
+Navigation can be done programaticaly using a hook or a service!
+
+---
+
+# Hooks
+
+https://kea.js.org/docs/introduction/what-is-kea
+Their docs website left me with a contusion.
+
+>Kea is a production-grade state management framework built for ambitious React apps.
+>It scales really well as your application grows and helps keep your state neat and clean.
+
+What ever that means... Digging further, I found an very opiniated, inflexible API designed to furstrate me.
+What this "framework" does is to reduce the boilerplate you need to manage your state, by offering to handle some Redux interations (yes, its actually
+a redux store)... Overusage of hooks
+
+---
+
+# Hooks
+
+http://motion-layout.azurewebsites.net/
+Hook that allows you to transition from one state to another, even if the next state is in a different layout.
+Usefull to create cool transition between pages and more. I'm limited by my creativity here. You can get some mobile level transitions
+
+Way more usefull than kea, since it solves a real problem.
+
+---
+
+# Experiments
+
+My favorite section. Let us begin!
+https://github.com/pmndrs
+This guy is just awesome.
+
+https://github.com/pmndrs/react-nil An reconciler that render null. Might look like an experiment that went wrong, but it's not the case
+Imagine you can run React anywhere, with a javascript enviroment. Node? Yes. Controll a canvas drawing, API backend React style, anything!
+And the entire ecosystem is there for you to use.
+
+https://github.com/pmndrs/react-three-fiber
+The entire ThreeJS library to used a components. Performant and it iterates fast to improve it even further.
+Version 5.1. now. It began as beta at the begining year. Their example include a spaceship game running at 60fps
+
+https://github.com/pmndrs/gltfjsx
+Need a 3D model in React? Done!
+
+Yes, he is the guy behind zustard and jotai.
+
+---
+
+# Experiments
+
+https://github.com/wooorm/lowlight Dealing with highlighting code?
+Want to customize the hell out of the output? `lowlight` evaluates strings and gives you the tokens for you to itterate over.
+If only rendering is needed it has a `react-lowlight` wrapper.
+`highlight.js` is needed in the project to register languages. If you want to use `prism` there is `refractor` and `react-refractor`
+
+---
+
+# Experiments
+
+https://flume.dev/ Cross from programming to visual programming using this tool. There will be a time when figma or some of the design tools out there
+will embrace this to help designers code. Just an experiments but this how the future is shaped. One step at a time
+
+---
+
+# Experiments
+
+https://github.com/vadimdemedes/ink Need to build a CLI? You would be amazed by how vast the CLI landscape is.
+If you still want to use React, you can do it using this library. You can create layouts, input fields like controlls and other components that handy.
+It's used by most of the tools that we are using, like yarn, parcel, gatsby and so on.
+Their examples includes a lot of other libraries that you should use if you want your CLI to be cutting edge.
+
+---
+
+# Experiments
+
+https://reactpixi.org/ React but for 2D. Includes most of the low level components PixiJS has. Enought to build a game.
+You have a very nice state management system combine it with this library then you should be able to build your game in no time.
+It's toolkit includes particles, meshes, image morphing capabilities, sprites and even tilling sprites.
+Typescript enabled.
+
+---
+
+# Experiments
+
+https://gooey-react.netlify.app/
+
+<style dangerouslySetInnerHTML={{__html: `
+svg#goo * { transform-origin: 50% }
+
+@keyframes left {
+  100% { transform: rotate(-360deg) }
+}
+
+@keyframes right {
+  100% { transform: rotate(360deg) }
+}
+`}}></style>
+
+<Goo intensity="strong">
+  <svg id="goo" width="192" height="192">
+    <g style={{ animation: 'left 4s linear infinite' }}>
+      <circle cx="37%" cy="37%" fill="orchid" r="32" style={{ animation: 'right 1s linear infinite' }}/>
+      <circle cx="63%" cy="63%" fill="mediumorchid" r="32" />
+      <circle cx="33%" cy="33%" fill="mediumorchid" r="32" />
+    </g>
+  </svg>
+</Goo>
+
+A splash screen for the game you always wanted to develop at the cost of 0.5kb
+
+---
+
+# Experiments
+
+https://codesurfer.pomb.us/
+Present code with flare like I do
+
+---
+
+# Experiments
+
+https://github.com/gregberge/react-teleporter
+Slot and fills is one concept that has been arround in React. Preact has its own implementation. This allows you to change the parent of a component
+while maitaining a the same owner.
+This for people that want to experiment with modular designs.
+
+---
+
+# Bonus round
+
+https://dassur.ma/things/react-redux-comlink/
+Move Redux outside the main thread to a worker. Yes it's doable, using https://github.com/GoogleChromeLabs/comlink.
+
+https://react-window.now.sh/#/examples/list/fixed-size
+React virtualized but a fraction of it's size
+
+https://testing-library.com/docs/react-testing-library/intro/
+Simplify your React, Svelte, Vue etc testing
+
+https://wattenberger.com/blog/gauge A well written tutorial with code annotations
