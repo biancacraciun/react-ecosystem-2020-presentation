@@ -3,11 +3,12 @@ import { LiveCode } from "mdx-deck-live-code";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Code from "mdx-code";
 
-import Goo from 'gooey-react'
+import Goo from "gooey-react";
 
 import { IdentityAvatar, IdentityTable, Likes, SideBySide } from "./styles";
 import ProCons from "./components/ProCons";
-import hookTweet from "./assets/hook-tweet.png"
+import hookTweet from "./assets/hook-tweet.png";
+import bytex from "./assets/bytex.png";
 import "./setup";
 
 import matrixTheme from "./styles/theme";
@@ -52,6 +53,15 @@ export const theme = matrixTheme;
         <FontAwesomeIcon icon="beer" />
         <FontAwesomeIcon icon="hamburger" />
       </Likes>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <FontAwesomeIcon icon="building" />
+    </td>
+    <td>
+      <img src={bytex} style={{width: "100px",  verticalAlign: "middle"}}/>
+      <img src="https://www.spectrocloud.com/static/2f7ad1a99089d96a9add037b1e3fb513/5c11c/logo_landscape_for_dark.png" style={{width: "140px",  verticalAlign: "middle", marginLeft: "40px"}}/>
     </td>
   </tr>
 </IdentityTable>
@@ -247,6 +257,7 @@ the limits of what you can accomplish with this UI library.
     "Inspired by Reacts API",
     "Reactive out of the box",
     "Hooks can be used outside of component functions",
+    <a href="https://krausest.github.io/js-framework-benchmark/2020/table_chrome_86.0.4240.75.html">Perf</a>
   ]}
   cons={[
     "It's not fully compatible with React",
@@ -347,7 +358,7 @@ the limits of what you can accomplish with this UI library.
 **_Synopsis:_** CSS in JS is awesome, but it sure is heavy
 
 <ProCons
-  pros={["Similar API as styled-component", "Preact and SSR friendly"]}
+  pros={["Similar API as styled-component", "Preact and SSR friendly", <a href="https://bundlephobia.com/result?p=styled-components@5.2.1">At a fraction of styled-components size</a>]}
   cons={["Not the easiest ThemeProvider around"]}
 />
 
@@ -378,7 +389,7 @@ Making Redux play well with typescript is something that you can mess up if you 
   </tr>
 </SideBySide>
 
-It has what redux added as best practices in it's guide, built-in and ready to use.
+It has what redux added as best practices in it's <a href="https://redux.js.org/style-guide/style-guide">guide</a>, built-in and ready to use.
 On top of this you also get some usefull and fancy features like:
 
 - immutable data (using proxies just like immerjs does)
@@ -521,7 +532,7 @@ It also has it's own devtools, and integrates easier with Typescript than redux.
 
 Developed by Vercel, it makes the whole Suspense feature reather useless. Usually your applications use state
 management to keep track of the data that is fetched and the result. Without this responsability on the develelopers
-sholders, you should be able to iterate faster with your features, and focus only on the local state a component has.
+shoulders, you should be able to iterate faster with your features, and focus only on the local state a component has.
 
 It has a lot of features like data polling, revalidate data when tab is focused or when the network is recovered,
 number of retries, pagination support, and local mutations for optimistic UI updates.
@@ -656,7 +667,9 @@ and showing a dependency graph of them.
       </svg>
     </td>
     <td>
-      <a href="https://react-spectrum.adobe.com/index.html">https://react-spectrum.adobe.com/index.html</a>
+      <a href="https://react-spectrum.adobe.com/index.html">
+        https://react-spectrum.adobe.com/index.html
+      </a>
     </td>
   </tr>
 </SideBySide>
@@ -680,7 +693,10 @@ Is this why `parcel v2` is delayed?
 <SideBySide>
   <tr>
     <td>
-      <img src="https://github.com/airbnb/visx/blob/master/assets/visx-geometry.png?raw=true" style={{maxWidth: "200px"}} />
+      <img
+        src="https://github.com/airbnb/visx/blob/master/assets/visx-geometry.png?raw=true"
+        style={{ maxWidth: "200px" }}
+      />
     </td>
     <td>
       <a href="https://airbnb.io/visx/">https://airbnb.io/visx/</a>
@@ -689,6 +705,7 @@ Is this why `parcel v2` is delayed?
 </SideBySide>
 
 <small>
+
 
 Airbnb is one of the companies that are not afraid to opensource their code. And they usually do it with flare. They are realy
 involved in the React community. `visx` is one more reason why the above statement is true.
@@ -704,13 +721,18 @@ It's modular and has every component it its own repository and very similar to h
 
 </small>
 
+
 ---
+
 # UI systems
 
 <SideBySide>
   <tr>
     <td>
-      <img src="https://github.com/galio-org/galio/raw/master/assets/galio-logo.png" style={{maxWidth: "200px"}} />
+      <img
+        src="https://github.com/galio-org/galio/raw/master/assets/galio-logo.png"
+        style={{ maxWidth: "200px" }}
+      />
     </td>
     <td>
       <a href="https://galio.io/">https://galio.io/</a>
@@ -724,15 +746,16 @@ When it comes to the number of components it exposes, they are in the low, but s
 a small application on top of it.
 
 ---
+
 # UI systems
 
 <SideBySide>
   <tr>
+    <td>actyx / industrial-ui</td>
     <td>
-      actyx / industrial-ui
-    </td>
-    <td>
-      <a href="https://github.com/Actyx/industrial-ui">https://github.com/Actyx/industrial-ui</a>
+      <a href="https://github.com/Actyx/industrial-ui">
+        https://github.com/Actyx/industrial-ui
+      </a>
     </td>
   </tr>
 </SideBySide>
@@ -747,10 +770,15 @@ used by old people, since the font size abd the touch area are preaty big, and t
 <SideBySide>
   <tr>
     <td>
-     <img src="https://react.geist-ui.dev/images/logo.png" style={{maxWidth: "200px"}} />
+      <img
+        src="https://react.geist-ui.dev/images/logo.png"
+        style={{ maxWidth: "200px" }}
+      />
     </td>
     <td>
-      <a href="https://react.geist-ui.dev/en-us/guide/introduction">https://react.geist-ui.dev/en-us/guide/introduction</a>
+      <a href="https://react.geist-ui.dev/en-us/guide/introduction">
+        https://react.geist-ui.dev/en-us/guide/introduction
+      </a>
     </td>
   </tr>
 </SideBySide>
@@ -768,7 +796,10 @@ The only thing that bugs me is that they don't have a scrollbars!!!!!
 <SideBySide>
   <tr>
     <td>
-     <img src="https://user-images.githubusercontent.com/36158/68255527-bea16d00-002d-11ea-9ad7-7dc0eebd55d2.png" style={{maxWidth: "200px"}} />
+      <img
+        src="https://user-images.githubusercontent.com/36158/68255527-bea16d00-002d-11ea-9ad7-7dc0eebd55d2.png"
+        style={{ maxWidth: "200px" }}
+      />
     </td>
     <td>
       <a href="https://ui.aragon.org/">https://ui.aragon.org/</a>
@@ -786,9 +817,7 @@ I wish more components were shown as example in their documentation webiste.
 
 <SideBySide>
   <tr>
-    <td>
-     Gestalt
-    </td>
+    <td>Gestalt</td>
     <td>
       <a href="https://gestalt.netlify.app/">https://gestalt.netlify.app/</a>
     </td>
@@ -890,8 +919,8 @@ Navigation can be done programaticaly using a hook or a service!
 https://kea.js.org/docs/introduction/what-is-kea
 Their docs website left me with a contusion.
 
->Kea is a production-grade state management framework built for ambitious React apps.
->It scales really well as your application grows and helps keep your state neat and clean.
+> Kea is a production-grade state management framework built for ambitious React apps.
+> It scales really well as your application grows and helps keep your state neat and clean.
 
 What ever that means... Digging further, I found an very opiniated, inflexible API designed to furstrate me.
 What this "framework" does is to reduce the boilerplate you need to manage your state, by offering to handle some Redux interations (yes, its actually
@@ -968,7 +997,9 @@ Typescript enabled.
 
 https://gooey-react.netlify.app/
 
-<style dangerouslySetInnerHTML={{__html: `
+<style
+  dangerouslySetInnerHTML={{
+    __html: `
 svg#goo * { transform-origin: 50% }
 
 @keyframes left {
@@ -978,24 +1009,72 @@ svg#goo * { transform-origin: 50% }
 @keyframes right {
   100% { transform: rotate(360deg) }
 }
-`}}></style>
+`,
+  }}
+></style>
 
 <Goo intensity="strong">
   <svg id="goo" width="192" height="192">
-    <g style={{ animation: 'left 4s linear infinite' }}>
-      <circle cx="37%" cy="37%" strokeWidth="10px" stroke="CORNSILK" fill="aqua" r="32" style={{ animation: 'right 1s linear infinite' }}/>
-      <circle cx="63%" cy="63%" strokeWidth="10px" stroke="MIDNIGHTBLUE" fill="aqua" r="32" />
-      <circle cx="33%" cy="33%" strokeWidth="10px" stroke="aqua" fill="CORNSILK" r="32" />
+    <g style={{ animation: "left 4s linear infinite" }}>
+      <circle
+        cx="37%"
+        cy="37%"
+        strokeWidth="10px"
+        stroke="CORNSILK"
+        fill="aqua"
+        r="32"
+        style={{ animation: "right 1s linear infinite" }}
+      />
+      <circle
+        cx="63%"
+        cy="63%"
+        strokeWidth="10px"
+        stroke="MIDNIGHTBLUE"
+        fill="aqua"
+        r="32"
+      />
+      <circle
+        cx="33%"
+        cy="33%"
+        strokeWidth="10px"
+        stroke="aqua"
+        fill="CORNSILK"
+        r="32"
+      />
     </g>
   </svg>
 </Goo>
 
 <Goo intensity="medium">
   <svg id="goo" width="192" height="192">
-    <g style={{ animation: 'left 4s linear infinite' }}>
-      <circle cx="37%" cy="37%" strokeWidth="10px" stroke="ROYALBLUE" fill="DARKBLUE" r="32" style={{ animation: 'right 1s linear infinite' }}/>
-      <circle cx="63%" cy="63%" strokeWidth="10px" stroke="POWDERBLUE" fill="DODGERBLUE" r="32" style={{ animation: 'right 2s linear infinite' }}/>
-      <circle cx="33%" cy="33%" strokeWidth="30px" stroke="INDIGO" fill="PURPLE" r="32" style={{ animation: 'left 3s linear infinite' }}/>
+    <g style={{ animation: "left 4s linear infinite" }}>
+      <circle
+        cx="37%"
+        cy="37%"
+        strokeWidth="10px"
+        stroke="ROYALBLUE"
+        fill="DARKBLUE"
+        r="32"
+        style={{ animation: "right 1s linear infinite" }}
+      />
+      <circle
+        cx="63%"
+        cy="63%"
+        strokeWidth="10px"
+        stroke="POWDERBLUE"
+        fill="DODGERBLUE"
+        r="32"
+        style={{ animation: "right 2s linear infinite" }}
+      />
+      <circle
+        cx="33%"
+        cy="33%"
+        strokeWidth="30px"
+        stroke="INDIGO"
+        fill="PURPLE"
+        r="32"
+        style={{ animation: "left 3s linear infinite" }}
+      />
     </g>
   </svg>
 </Goo>
